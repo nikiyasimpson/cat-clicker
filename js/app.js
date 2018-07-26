@@ -1,5 +1,5 @@
 
-
+//Create a Cat class
 class Cat {
     constructor() {
         this.pictureSource = 'images/';
@@ -7,41 +7,53 @@ class Cat {
         this.clicks = 0;
     }
 
-    increaseCounter() {
-	//increment counter and display on page and console
- 	this.clicks++;
-    //counterArea.find('.count').text(this.clicks);
-	};
+ 
 
 }
 
-//Cat 1 Information 
-let cat1 = new Cat();
+//Store List of Cats in a Cat Array
+let catsList  = [];
+
+//Number of Cats you want to play with
+const noCats = 2;
+
+//Add cats to array
+for (var i = 0; i < noCats; i++) {
+    catsList.push(new Cat());
+   
+ }
+
+//Specify cat information
+ //Cat 1 Information 
+let cat1 = catsList[0];
 cat1.pictureSource += 'cat.jpg';
 cat1.catName = "Missy";
-$('#cat1').prepend($('<h2>',{id:'cat1Header'}));
-$('#cat1Header').text(cat1.catName);
-$('#cat1').append($('<img>',{id:'cat1Pic',src:cat1.pictureSource,class:'cat-image'}));
-$('#catCounter1').append($('<span>',{id:'count1', class:'count'}));
-let count1 = $('#count1');
-count1.text('Counter: '+ cat1.clicks);
-$('#cat1Pic').click(function() {
-	cat1.increaseCounter();
-	count1.text('Counter: '+ cat1.clicks);
-});
 
 //Cat 2 Information 
-let cat2 = new Cat();
+let cat2 = catsList[1];
 cat2.pictureSource += 'cat2.jpg';
 cat2.catName = "Mister";
-$('#cat2').prepend($('<h2>',{id:'cat2Header'}));
-$('#cat2Header').text(cat2.catName);
-$('#cat2').append($('<img>',{id:'cat2Pic',src:cat2.pictureSource,class:'cat-image'}));
-$('#catCounter2').append($('<span>',{id:'count2', class:'count'}));
-let count2 = $('#count2');
-count2.text('Counter: '+ cat2.clicks);
 
-$('#cat2Pic').click(function() {
-	cat2.increaseCounter();
-	count2.text('Counter: '+ cat2.clicks);
-});
+
+
+//Display cats on the app and assign event listener
+for(var i =0; i < catsList.length; i++){
+    let cat = catsList[i];
+    let catItem = 'cat'+[i+1];
+    let catCounter = 'catCounter'+[i+1];
+    let count = 'count'+[i+1];
+    $('main').append("<div id='"+catItem+"' class='cat-area'><h3 id='"+catCounter+"'></h3></div>"); 
+    $('#'+catItem).prepend("<h2 id='"+catItem+"Header'>"+cat.catName+"</h2>");
+    $('#'+catItem).append("<img id='"+catItem+"Pic' src='"+ cat.pictureSource +"' class='cat-image'>");
+    $('#'+catCounter).append("<span id='"+count+"' class='count'> Counter "+ cat.clicks+"</span>");
+
+    let catPicture = $('#'+catItem+"Pic");
+    catPicture.click(increaseCounter);
+
+    function increaseCounter() {
+    //increment counter and display on page and console
+    cat.clicks++;
+    $('#'+count).text('Count: '+cat.clicks);
+    };
+};
+
