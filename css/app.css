@@ -21,3 +21,35 @@ h3{
     margin-right: auto;
     width: 30%;
 }
+
+header {
+	display:block;
+	width:100%;
+	margin:10px;
+}
+
+.cat-game {
+	width:50%;
+	float:left;
+	
+}
+
+.hidden{
+	display:none;
+}
+
+.cat-list-style{
+	list-style-type:none;
+	text-align:center;
+
+}
+
+ul#list-of-cats li{
+	display:inline;
+	border-radius: 5px;
+	padding:5px;
+	border: 1px solid blue;
+	color: white;
+	background-color: blue;
+	margin: 5px;
+}
