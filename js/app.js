@@ -6,9 +6,6 @@ class Cat {
         this.catName;
         this.clicks = 0;
     }
-
- 
-
 }
 
 //Store List of Cats in a Cat Array
@@ -54,8 +51,15 @@ let cat6 = catsList[5];
 cat6.pictureSource += 'cat6.jpg';
 cat6.catName = "Prinky";
 
+//View for List of Cats
 
+for(var i =0; i < catsList.length; i++){
+    let cat = catsList[i];
+    let catListItem = 'cat-elem'+[i+1];
+    $('#list-of-cats').append("<li id='"+catListItem+"'>"+cat.catName+"</li>");
+    };
 
+//View for Displaying Cats
 
 //Display cats on the app and assign event listener
 for(var i =0; i < catsList.length; i++){
@@ -64,7 +68,7 @@ for(var i =0; i < catsList.length; i++){
     let catListItem = 'cat-elem'+[i+1];
     let catCounter = 'catCounter'+[i+1];
     let count = 'count'+[i+1];
-    $('#list-of-cats').append("<li id='"+catListItem+"'>"+cat.catName+"</li>");
+    //$('#list-of-cats').append("<li id='"+catListItem+"'>"+cat.catName+"</li>");
     $('#cat-game').append("<div id='"+catItem+"' class='cat-area hidden'><h3 id='"+catCounter+"'></h3></div>"); 
     $('#'+catItem).prepend("<h2 id='"+catItem+"Header'>"+cat.catName+"</h2>");
     $('#'+catItem).append("<img id='"+catItem+"Pic' src='"+ cat.pictureSource +"' class='cat-image'>");
@@ -86,4 +90,3 @@ for(var i =0; i < catsList.length; i++){
     $('#'+count).text('Count: '+cat.clicks);
     };
 };
-

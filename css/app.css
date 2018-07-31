@@ -38,6 +38,11 @@ header {
 	display:none;
 }
 
+.cat-counter {
+	text-align: center;
+	font-weight:bold;
+}
+
 .cat-list-style{
 	list-style-type:none;
 	text-align:center;
