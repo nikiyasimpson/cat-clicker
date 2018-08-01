@@ -1,26 +1,11 @@
 
 //Model
-//class Cat {
- //   constructor() {
-  //      this.pictureSource = 'images/';
-  //      this.catName;
-  //      this.clicks = 0;
-  //  }
-//}
 
 var model = {
         noCats: 6,
 		currentCat: null,
 		catsList: []
 	};
-//Create a Cat class
-
-
-//Store List of Cats in a Cat Array
-//let catsList  = [];
-
-//Number of Cats you want to play with
-
 
 //Add cats to array
 for (var i = 0; i < model.noCats; i++) {
@@ -70,6 +55,9 @@ let cat6 = model.catsList[5];
 cat6.pictureSource += 'cat6.jpg';
 cat6.catName = "Prinky";
 
+
+//Octopus
+
 var octopus = {
     init: function() {
         model.currentCat = model.catsList[0];
@@ -78,14 +66,18 @@ var octopus = {
         catView.init();
     },
 
+    //Get the current cat information
     getCurrentCat: function(){
         return model.currentCat;
     },
 
+
+    //Get all the cats in our list
     getCats: function(){
         return model.catsList;
     },
 
+    //Set the current cat in focus
     setCurrentCat: function(cat){
         model.currentCat = cat;
     },
@@ -95,12 +87,18 @@ var octopus = {
     model.currentCat.clicks++;
     //$('#'+count).text('Count: '+cat.clicks);
     catView.render();
+    },
+
+    //Update cat information
+    updateCatInfo: function(name,src,clicks){
+        model.currentCat.catName = name;
+        model.currentCat.pictureSource = src;
+        model.currentCat.clicks = clicks;
+       
     }
 }
 
-
-
-
+//Views
 
 var catView = {
     init: function() {
@@ -109,14 +107,37 @@ var catView = {
         this.catNameElem = $('#cat-name');
         this.catImageElem = $('#cat-img');
         this.countElem = $('#cat-count');
+        this.adminButton = $('#adminbutton');
+        this.cancelButton = $('#cancelbutton');
+
+        this.catNameText = $('#catNameText');
+        this.catImgSrc = $('#catImgSrc');
+        this.catClicksTxt = $('#catClicksTxt');
+        this.saveButton = $('#savebutton');
+        
 
         this.catImageElem.click(function(){
             octopus.increaseCounter();
         });
 
+        this.saveButton.click(function(){
+            var name = $('#catNameText').val();
+            var imgsrc = $('#catImgSrc').val();
+            var clicks = $('#catClicksTxt').val();
+            var noclicks = parseInt(clicks);
+            octopus.updateCatInfo(name,imgsrc,noclicks);
+
+        });
+
+        this.adminButton.click(function(){
+            $('#cat-form-area').toggleClass('hidden');
+        });
+
+        this.cancelButton.click(function(){
+            $('#cat-form-area').toggleClass('hidden');
+        });
+
         this.render();
-
-
     },
 
     render: function(){
@@ -125,7 +146,10 @@ var catView = {
         this.countElem.text("Count: " + currentCat.clicks);
         this.catNameElem.text(currentCat.catName);
         this.catImageElem.attr("src",currentCat.pictureSource);
-        //this.catImageElem.src(currentCat.pictureSource);
+        
+        this.catNameText.val(currentCat.catName);
+        this.catImgSrc.val(currentCat.pictureSource); 
+        this.catClicksTxt.val(currentCat.clicks); 
 
     }
 };
@@ -134,6 +158,10 @@ var catView = {
 var catListView = {
     init: function() {
         this.catListElem = $('#list-of-cats');
+        this.catNameText = $('#catNameText');
+        this.catImgSrc = $('#catImgSrc');
+        this.catClicksTxt = $('#catClicksTxt');
+        
         this.render();
     },
 
@@ -146,8 +174,6 @@ var catListView = {
 
             var cat = cats[i];
             var elem = document.createElement('li');
-
-
         
             elem.textContent = cat.catName;
 
@@ -164,11 +190,7 @@ var catListView = {
             );
 
             this.catListElem.append(elem);
-
         };
-
-
-
     }
 };
 

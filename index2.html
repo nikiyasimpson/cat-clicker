@@ -11,7 +11,7 @@
 
     <div class="container">
         <header>
-            <h1>Cat Clicker Premium</h1>
+            <h1>Cat Clicker Premium Pro</h1>
             <ul id="list-of-cats" class="cat-list-style"></ul>
         </header>
         <main> 
@@ -19,7 +19,28 @@
                 <h2 id="cat-name"></h2>
                 <div id="cat-count" class="cat-counter"></div>
                 <img id="cat-img" src="" alt="cute cat" class="cat-image">
+
             </div>
+            <div class="admin-sub">
+                 <button id="adminbutton" type="button">Admin</button>
+            </div>
+            <div id="cat-form-area" class="hidden">
+                <form>
+                    Cat name:<br>
+                    <input id="catNameText" type="text" name="catnametxt"><br>
+                    Image Source URL:<br>
+                    <input id="catImgSrc" name="imgsrctxt" type="text"><br>
+                    Number of Clicks:<br>
+                    <input id="catClicksTxt" name="clickstxt" type="text"><br>
+                    <button id="savebutton" type="button">Save</button>
+                    <button id="cancelbutton" type="button">Cancel</button>
+
+                </form>
+            </div>
+
+            <form>
+            
+            </form>
         </main>
         <footer>
             <p>Nikiya M. Simpson, MBA, Google Scholar in Udacity FEND Nanodegree Program</p>

@@ -62,3 +62,42 @@ ul#list-of-cats li{
 footer{
 	text-align:center;
 }
+
+.admin-sub {
+	display:block;
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:10px;
+
+}
+
+button {
+	
+	border-radius: 5px;
+	padding:5px;
+	border: 1px solid blue;
+	color: white;
+	background-color: blue;
+	margin: 5px;
+	font-size:12px;
+
+
+}
+
+#cat-form-area {
+	width:50%;
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+	border: 1px solid blue;
+	border-radius:5px;
+}
+
+input[type=text]{
+	border: 1px solid black;
+	border-radius: 5px;
+	padding:5px;
+	margin: 5px;
+	text-align:center;
+}
